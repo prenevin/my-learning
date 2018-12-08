@@ -5,4 +5,5 @@ import com.prenevin.springbootlearning.repository.api.ToolRepository;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ToolJpaRepository extends JpaRepository<Tool, Long> , ToolRepository {
+
 }

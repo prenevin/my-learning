@@ -6,23 +6,28 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "tool")
+@Table(name = "tool", uniqueConstraints = @UniqueConstraint(name="uq_tool_name", columnNames = "name"))
 @NoArgsConstructor
 @Getter
+@Setter
 public class Tool extends BaseDomain {
 
     public Tool(String name) {
         this.name = name;
     }
 
+    @NotNull
     @Column(name = "name")
     private String name;
 

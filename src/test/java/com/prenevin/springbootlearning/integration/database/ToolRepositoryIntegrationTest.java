@@ -31,11 +31,39 @@ public class ToolRepositoryIntegrationTest extends DatabaseIntegrationTest {
     }
 
     @Test
-    @Sql("classpath:integration/sql/toolRepositoryTest.sql")
+    @Sql("classpath:integration/sql/tool.sql")
     public void findByNameThenReturnMatchingTool() {
         Tool tongs = toolRepository.findByName("Tongs");
         assertThat(tongs)
                 .isNotNull()
                 .hasFieldOrPropertyWithValue("name", "Tongs");
+    }
+
+
+    // TODO How to test an update
+    // This test is not doing that as the update did not commit
+    @Test
+    @Sql("classpath:integration/sql/tool.sql")
+    public void updateExistingTool() {
+        Tool tongs = (Tool) getEntityManager().createQuery("select a from Tool a where a.name='Tongs'").getSingleResult();
+        tongs.setName("Metal Tongs");
+
+        List<Tool> resultList = getEntityManager().createQuery("select a from Tool a").getResultList();
+        assertThat(resultList)
+                .isNotNull()
+                .contains(tongs)
+                .doesNotContain(new Tool("Tongs"));
+    }
+
+    @Test
+    @Sql("classpath:integration/sql/tool.sql")
+    public void deleteExistingTool() {
+        Tool tongs = (Tool) getEntityManager().createQuery("select a from Tool a where a.name='Tongs'").getSingleResult();
+        toolRepository.delete(tongs);
+
+        List<Tool> resultList = getEntityManager().createQuery("select a from Tool a").getResultList();
+        assertThat(resultList)
+                .isNotNull()
+                .doesNotContain(tongs);
     }
 }
