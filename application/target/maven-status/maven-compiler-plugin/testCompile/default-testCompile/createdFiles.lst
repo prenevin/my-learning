@@ -1,0 +1,3 @@
+com\prenevin\application\SpringBootLearningApplicationTests.class
+com\prenevin\application\integration\service\ToolServiceIntegrationTest.class
+com\prenevin\application\integration\database\ToolRepositoryIntegrationTest.class

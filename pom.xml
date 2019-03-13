@@ -9,11 +9,19 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.prenevin</groupId>
+
     <artifactId>spring-boot-learning</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
     <name>spring-boot-learning</name>
     <description>Demo project for Spring Boot</description>
+
+    <modules>
+        <module>application</module>
+        <module>crud-library</module>
+        <module>test-library</module>
+    </modules>
+
 
     <properties>
         <java.version>1.8</java.version>

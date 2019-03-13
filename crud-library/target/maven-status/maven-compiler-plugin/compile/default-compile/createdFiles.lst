@@ -1,0 +1,5 @@
+com\prenevin\library\crud\repository\BaseRepository.class
+com\prenevin\library\crud\resource\BaseCrudRestResource.class
+com\prenevin\library\crud\service\api\BaseCrudService.class
+com\prenevin\library\crud\service\impl\BaseCrudServiceImpl.class
+com\prenevin\library\crud\domain\BaseDomain.class
