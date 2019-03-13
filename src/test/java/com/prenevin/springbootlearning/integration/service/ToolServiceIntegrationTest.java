@@ -12,7 +12,8 @@ import org.springframework.test.context.transaction.TestTransaction;
 import java.util.List;
 import java.util.stream.Stream;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.fail;
 
 public class ToolServiceIntegrationTest extends ServiceIntegrationTest {
 
@@ -24,24 +25,24 @@ public class ToolServiceIntegrationTest extends ServiceIntegrationTest {
     public void getAllTools() {
         String[] expectedToolNames = {"Tongs", "Hammer"};
         Tool[] expectedTools = Stream.of(expectedToolNames)
-                .map(Tool::new).toArray(Tool[]::new);
+            .map(Tool::new).toArray(Tool[]::new);
 
-        List<Tool> resultTools = toolService.getTools();
+        List<Tool> resultTools = toolService.findAll();
 
         assertThat(resultTools)
-                .hasSize(3)
-                .contains(expectedTools);
+            .hasSize(3)
+            .contains(expectedTools);
     }
 
     @Test
     public void saveTool() {
         Tool tool = new Tool("Hammer");
 
-        Tool savedTool = toolService.saveTool(tool);
+        Tool savedTool = toolService.create(tool);
         List<Tool> resultList = getEntityManager().createQuery("select a from Tool a").getResultList();
 
         assertThat(resultList)
-                .contains(savedTool);
+            .contains(savedTool);
     }
 
     @Test
@@ -50,11 +51,11 @@ public class ToolServiceIntegrationTest extends ServiceIntegrationTest {
         Tool tool = new Tool("Hammer");
 
         try {
-            toolService.saveTool(tool);
+            toolService.update(tool);
             fail("Can't save a tool that already exists");
         } catch (DataIntegrityViolationException expected) {
             assertThat(TestTransaction.isFlaggedForRollback())
-                    .isTrue();
+                .isTrue();
 
         }
     }

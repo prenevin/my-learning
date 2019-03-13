@@ -26,8 +26,8 @@ public class ToolRepositoryIntegrationTest extends DatabaseIntegrationTest {
         // Should not use the toolRepository to get all the items, as that is the class you are testing
         List<Tool> allTools = getEntityManager().createQuery("Select a from Tool a").getResultList();
         assertThat(allTools)
-                .hasSize(1) // Testing that the database is empty. For understanding how the transactions work
-                .contains(tool);
+            .hasSize(1) // Testing that the database is empty. For understanding how the transactions work
+            .contains(tool);
     }
 
     @Test
@@ -35,8 +35,8 @@ public class ToolRepositoryIntegrationTest extends DatabaseIntegrationTest {
     public void findByNameThenReturnMatchingTool() {
         Tool tongs = toolRepository.findByName("Tongs");
         assertThat(tongs)
-                .isNotNull()
-                .hasFieldOrPropertyWithValue("name", "Tongs");
+            .isNotNull()
+            .hasFieldOrPropertyWithValue("name", "Tongs");
     }
 
 
@@ -50,9 +50,9 @@ public class ToolRepositoryIntegrationTest extends DatabaseIntegrationTest {
 
         List<Tool> resultList = getEntityManager().createQuery("select a from Tool a").getResultList();
         assertThat(resultList)
-                .isNotNull()
-                .contains(tongs)
-                .doesNotContain(new Tool("Tongs"));
+            .isNotNull()
+            .contains(tongs)
+            .doesNotContain(new Tool("Tongs"));
     }
 
     @Test
@@ -63,7 +63,7 @@ public class ToolRepositoryIntegrationTest extends DatabaseIntegrationTest {
 
         List<Tool> resultList = getEntityManager().createQuery("select a from Tool a").getResultList();
         assertThat(resultList)
-                .isNotNull()
-                .doesNotContain(tongs);
+            .isNotNull()
+            .doesNotContain(tongs);
     }
 }

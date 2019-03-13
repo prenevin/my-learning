@@ -8,7 +8,7 @@ import javax.persistence.OneToOne;
 @Entity
 public class Knight extends Person {
 
-    @Column(name="kingdom")
+    @Column(name = "kingdom")
     private String kingdom;
 
     @OneToOne(cascade = CascadeType.ALL)

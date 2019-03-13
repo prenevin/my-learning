@@ -9,7 +9,7 @@ import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotNull;
 
 @Entity
-@Table(name = "person", uniqueConstraints = @UniqueConstraint(name="uq_person_name", columnNames = "name"))
+@Table(name = "person", uniqueConstraints = @UniqueConstraint(name = "uq_person_name", columnNames = "name"))
 public class Person extends BaseDomain {
 
     @NotNull

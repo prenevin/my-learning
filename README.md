@@ -4,7 +4,7 @@ Using Spring boot as a base line.
 
 
 ## Domain
-A Knight as a Sword. A Blacksmith has Tools. A Blacksmith repairs Swords.   
+A Knight as a Sword. A Blacksmith has Tools. A Blacksmith repairs Swords. A Job ticket is for a    
 
 ## Package structure:
 Base on https://martinfowler.com/articles/microservice-testing/#anatomy-modules 

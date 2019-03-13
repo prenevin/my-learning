@@ -1,5 +1,8 @@
 package com.prenevin.springbootlearning.service.api
-        ;
+    ;
 
-public interface PersonService {
+import com.prenevin.springbootlearning.common.BaseCrudService;
+import com.prenevin.springbootlearning.domain.Person;
+
+public interface PersonService extends BaseCrudService<Person> {
 }

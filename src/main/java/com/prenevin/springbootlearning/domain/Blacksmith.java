@@ -1,6 +1,10 @@
 package com.prenevin.springbootlearning.domain;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,8 +17,8 @@ public class Blacksmith extends Person {
 
     @ManyToMany
     @JoinTable(name = "blacksmith_tool",
-            joinColumns = @JoinColumn(name = "tool_id"),
-            inverseJoinColumns = @JoinColumn(name = "blacksmith_id"))
+        joinColumns = @JoinColumn(name = "tool_id"),
+        inverseJoinColumns = @JoinColumn(name = "blacksmith_id"))
     private List<Tool> tools = new ArrayList<>();
 
     public void addTool(Tool tool) {
